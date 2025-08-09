@@ -2,28 +2,42 @@ package Solutions;
 
 import java.util.*;
 class 사다리타기 {
+//    public char[] solution(int n, int[][] ladder){
+//        char[] answer = new char[n];
+//        char[] first = new char[n];
+//        for(int i = 0 ; i < n ; i++){
+//            first[i] = (char)(65 + i);
+//        }
+//        for(int i = 0 ; i < n ; i++){
+//            char cur = first[i];
+//            int line = i + 1;
+//            for(int j = 0 ; j < ladder.length ; j++){
+//                int[] curLine = ladder[j];
+//                for(int k = 0 ; k < curLine.length ; k++){
+//                    if(curLine[k] == line){
+//                        line++;
+//                        continue;
+//                    } else if(curLine[k] == line - 1){
+//                        line--;
+//                        continue;
+//                    }
+//                }
+//            }
+//            answer[line - 1] = cur;
+//        }
+//        return answer;
+//    }
     public char[] solution(int n, int[][] ladder){
         char[] answer = new char[n];
-        char[] first = new char[n];
         for(int i = 0 ; i < n ; i++){
-            first[i] = (char)(65 + i);
+            answer[i] = (char)(65 + i);
         }
-        for(int i = 0 ; i < n ; i++){
-            char cur = first[i];
-            int line = i + 1;
-            for(int j = 0 ; j < ladder.length ; j++){
-                int[] curLine = ladder[j];
-                for(int k = 0 ; k < curLine.length ; k++){
-                    if(curLine[k] == line){
-                        line++;
-                        continue;
-                    } else if(curLine[k] == line - 1){
-                        line--;
-                        continue;
-                    }
-                }
+        for(int i = 0 ; i < ladder.length ; i++){
+            for(int j = 0 ; j < ladder[i].length ; j++){
+                char temp = answer[ladder[i][j] - 1];
+                answer[ladder[i][j] - 1] = answer[ladder[i][j]];
+                answer[ladder[i][j]] = temp;
             }
-            answer[line - 1] = cur;
         }
         return answer;
     }
