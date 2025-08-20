@@ -72,9 +72,9 @@ class 최소비행료 {
                 for(int[] next : graph.get(pos)){
                     int nextPos = next[0];
                     int nextCost = next[1];
-                    q.offer(new int[]{nextPos, nextCost + cost});
                     if(costs[nextPos] > nextCost + cost){
                         costs[nextPos] = nextCost + cost;
+                        q.offer(new int[]{nextPos, nextCost + cost});
                     }
                 }
             }
